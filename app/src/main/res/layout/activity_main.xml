@@ -7,13 +7,13 @@
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/activity_home_fragmentId"
+        android:id="@+id/activity_home_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/activity_home_radiogroupId"
+        android:layout_above="@+id/activity_home_radiogroup"
         ></FrameLayout>
     <RadioGroup
-        android:id="@+id/activity_home_radiogroupId"
+        android:id="@+id/activity_home_radiogroup"
         android:background="#555"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
@@ -69,6 +69,7 @@
 
         <!--我的-->
         <RadioButton
+            android:layout_marginTop="5dp"
             android:id="@+id/activity_home_rb_my"
             android:text="我的"
             android:drawableTop="@drawable/main_activity_radion_my"
