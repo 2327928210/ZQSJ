@@ -3,4 +3,23 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--radiobutton对应的文本颜色-->
+    <color name="radiobutton_checked">#d00</color>
+    <color name="radiobutton_noChecked">#888</color>
+
+     <!--navigationView对应的文本颜色-->
+    <color name="navigationView_checked">#fff</color>
+    <color name="navigationView_noChecked">#aaa</color>
+
+
+    <!--relative对应的背景颜色-->
+    <color name="relativelayout_checked">#ccc</color>
+    <color name="relativelayout_noChecked">#fff</color>
+
+    <!--button对应的背景颜色-->
+    <color name="button_checked">#ee7600</color>
+    <color name="button_noChecked">#fff</color>
+
+
 </resources>
