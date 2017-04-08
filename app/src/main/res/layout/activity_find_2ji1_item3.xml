@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="215dp">
+    <ImageView
+        android:id="@+id/find_2ji1_item3_image"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:src="@drawable/loading"
+        android:scaleType="fitXY"
+        android:background="#ccdddddd"/>
+    <TextView
+        android:id="@+id/find_2ji1_item3_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="25dp"
+        android:text="热点资讯"
+        android:textColor="#eee"
+        />
+    <TextView
+        android:layout_below="@+id/find_2ji1_item3_text1"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/find_2ji1_item3_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="882"
+        android:textSize="13dp"
+        android:textColor="#fff"
+        android:drawableLeft="@drawable/subscription_num"/>
+    <Button
+        android:id="@+id/find_2ji1_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/un_subscribed_big"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/find_2ji1_button" />
+</RelativeLayout>

@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.example.haier.sheji"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,4 +34,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:24.0.0-beta1'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile project(':pullToRefresh_Library')
 }

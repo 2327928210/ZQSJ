@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_find_thrid1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context="com.app.zhangzhaoqiang.theheadlines.ui.FindThridActivity1">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/find_3ji1_image1"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:src="@drawable/loading"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/find_3ji1_text1"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="75dp"
+            android:layout_height="28dp"
+            android:text=""
+            android:padding="2dp"
+            android:textSize="14dp"
+            android:textColor="#333"
+            android:gravity="center"
+            android:background="@drawable/zidingyi"/>
+        <TextView
+            android:id="@+id/find_3ji1_text2"
+            android:layout_below="@+id/find_3ji1_image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333"
+            android:textSize="23dp"
+            android:text=""
+            android:textStyle="bold"
+            android:padding="15dp"/>
+        <ImageView
+            android:id="@+id/find_3ji1_image2"
+            android:layout_below="@+id/find_3ji1_text2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/loading"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:id="@+id/find_3ji1_text3"
+            android:layout_toRightOf="@+id/find_3ji1_image2"
+            android:layout_alignBottom="@+id/find_3ji1_image2"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333"
+            android:textSize="13dp"
+            android:text=""/>
+        <TextView
+            android:id="@+id/find_3ji1_text4"
+            android:layout_below="@+id/find_3ji1_image2"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text=""/>
+
+
+        <TextView
+            android:id="@+id/find_3ji_text"
+            android:layout_below="@+id/find_3ji1_text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:textColor="#333"
+            android:text=""
+            android:layout_marginTop="5dp"
+            android:padding="10dp"/>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="5dp">
+    <ImageView
+        android:id="@+id/find_2ji1_item1_image"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:src="@drawable/loading"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        />
+    <TextView
+        android:id="@+id/find_2ji1_item1_text1"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:textColor="#333"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+
+    <TextView
+        android:id="@+id/find_2ji1_item1_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:drawableLeft="@drawable/icon_read_num"
+        android:text="882"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        />
+
+</RelativeLayout>
