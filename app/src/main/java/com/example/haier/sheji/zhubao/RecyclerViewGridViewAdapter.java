@@ -87,7 +87,7 @@ public class RecyclerViewGridViewAdapter extends RecyclerView.Adapter {
                 return;
             }
             ViewHolder viewHolder = (ViewHolder) holder;
-            Glide.with(context).load("http://192.168.16.44:88/photo-album/image/" + bean.getImg()).placeholder(R.mipmap.default_img).into(viewHolder.itemImage);
+            Glide.with(context).load("http://zbtj.batar.cn:9999/photo-album/image/" + bean.getImg()).placeholder(R.mipmap.default_img).into(viewHolder.itemImage);
             viewHolder.text1.setText(bean.getNumber());
             viewHolder.text2.setText(bean.getName());
 

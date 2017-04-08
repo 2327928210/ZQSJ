@@ -81,7 +81,7 @@ public class ZhuBaoFragment extends Fragment {
 
         init();
 
-        swipeRefreshLayout.setColorSchemeColors(Color.CYAN, Color.DKGRAY, Color.GRAY);
+        swipeRefreshLayout.setColorSchemeColors(Color.GREEN, Color.RED, Color.GRAY);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -154,7 +154,7 @@ public class ZhuBaoFragment extends Fragment {
 
     private void httpUrl() {
 
-        StringRequest request = new StringRequest("http://192.168.16.44:88/photo-album/search/recommend/?page=" + page + "&itemperpage=" + itemPage, new Response.Listener<String>() {
+        StringRequest request = new StringRequest("http://zbtj.batar.cn:9999/photo-album/search/recommend/?page="+page+"&itemperpage=" +itemPage, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -194,7 +194,10 @@ public class ZhuBaoFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络请求失败,请检查网络状况", Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "网络请求失败,请检查网络状况", Toast.LENGTH_SHORT).show();
+                }
+
                 Log.e("TAG", error.toString());
             }
         }) {
@@ -231,14 +234,16 @@ public class ZhuBaoFragment extends Fragment {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 关闭加载进度条
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        });
+                    }
 
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            // 关闭加载进度条
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    });
                 }
             }, 1000);
         }
