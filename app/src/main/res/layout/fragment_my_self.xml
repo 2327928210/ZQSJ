@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"
-            android:text="趣你的头条"/>
+            android:text="百科新闻"/>
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_width="22dp"
