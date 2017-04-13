@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.haier.sheji.R;
 import com.example.haier.sheji.find.bean.Find1;
+import com.example.haier.sheji.view.GlideCirclerTransform;
 
 import java.util.List;
 
@@ -100,7 +101,7 @@ public class FindListViewAdapter extends BaseAdapter {
         Find1 find1=data.get(position);
 
         if(find1.getType()==0) {
-            Glide.with(context).load(find1.getImg_src()).placeholder(R.mipmap.loading).into(viewHolderFind.imageView1);
+            Glide.with(context).load(find1.getImg_src()).placeholder(R.mipmap.loading).transform(new GlideCirclerTransform(context)).into(viewHolderFind.imageView1);
         }else{
 
             Glide.with(context).load(find1.getImg_src()).placeholder(R.mipmap.loading).into(viewHolderFind.imageView1);
