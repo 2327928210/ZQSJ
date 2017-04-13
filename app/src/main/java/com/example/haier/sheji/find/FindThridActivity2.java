@@ -1,10 +1,10 @@
 package com.example.haier.sheji.find;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.haier.sheji.MyApp;
 import com.example.haier.sheji.R;
 import com.example.haier.sheji.view.GlideCirclerTransform;
 
@@ -28,21 +28,17 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Find_Second_Activity2 extends Activity {
-
+public class FindThridActivity2 extends AppCompatActivity {
     private TextView textView;
+    private String stream;
+    private String code;
+    private String path;
+
+    private String content2;
+    private Map<String,Drawable> map = new HashMap<>();//存放图片的集合
+
     private ImageView imageView1,imageView2;
     private TextView textView1,textView2,textView3,textView4;
-
-
-    private String httpUrl;
-    private String content2;
-
-    //一级界面传入的参数
-    private String id;
-    private String code;
-
-    //二级界面需要解析的数据
     private String img_src;
     private String title;
     private String pubtime;
@@ -50,38 +46,32 @@ public class Find_Second_Activity2 extends Activity {
     private String head_img;
     private String fcate_title;
 
-    private Map<String,Drawable> map = new HashMap<>();//存放图片的集合
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find__second_2);
+        setContentView(R.layout.activity_find_thrid1);
 
-        initView();
+        textView= (TextView) findViewById(R.id.find_3ji_text);
+        imageView1= (ImageView) findViewById(R.id.find_3ji1_image1);
+        imageView2= (ImageView) findViewById(R.id.find_3ji1_image2);
+        textView1= (TextView) findViewById(R.id.find_3ji1_text1);
+        textView2= (TextView) findViewById(R.id.find_3ji1_text2);
+        textView3= (TextView) findViewById(R.id.find_3ji1_text3);
+        textView4= (TextView) findViewById(R.id.find_3ji1_text4);
 
         Intent intent=getIntent();
-        id=intent.getStringExtra("stream_id");
-        code=intent.getStringExtra("code");
-        //Toast.makeText(this,id,Toast.LENGTH_SHORT).show();
-        httpUrl="http://app.lerays.com/api/stream/view?stream_id="+id+"&_ack="+code+"&_ack="+code+"&stream_id="+id;
-        initHttp(httpUrl);
+        stream = intent.getStringExtra("stream2");
+        code = intent.getStringExtra("ack2 ");
+        path="http://app.lerays.com/api/stream/view?_ack="+code+"&stream_id="+stream;
 
+        initHttp(path);
     }
 
-    private void initView() {
-        textView= (TextView) findViewById(R.id.find_2ji2_textView);
-        imageView1= (ImageView) findViewById(R.id.find_2ji2_image1);
-        imageView2= (ImageView) findViewById(R.id.find_2ji2_image2);
-        textView1= (TextView) findViewById(R.id.find_2ji2_text1);
-        textView2= (TextView) findViewById(R.id.find_2ji2_text2);
-        textView3= (TextView) findViewById(R.id.find_2ji2_text3);
-        textView4= (TextView) findViewById(R.id.find_2ji2_text4);
-    }
+    private void initHttp(String path) {
 
-    private void initHttp(String url) {
-
-        StringRequest stringRequest=new StringRequest(url, new Response.Listener<String>() {
+        StringRequest request= new StringRequest(path, new Response.Listener<String>() {
             @Override
-            public void onResponse(final String response) {
+            public void onResponse(String response) {
 
                 try {
                     JSONObject object=new JSONObject(response);
@@ -105,25 +95,23 @@ public class Find_Second_Activity2 extends Activity {
                     textView4.setText(pubtime);
 
 
-                    Glide.with(Find_Second_Activity2.this).load(img_src).placeholder(R.mipmap.loading).into(imageView1);
-                    Glide.with(Find_Second_Activity2.this).load(head_img).placeholder(R.mipmap.loading).transform(new GlideCirclerTransform(Find_Second_Activity2.this)).into(imageView2);
-                    //Picasso.with(Find_Second_Activity2.this).load(img_src).into(imageView1);
-                    //Picasso.with(Find_Second_Activity2.this).load(head_img).transform(new CircleTransform()).into(imageView2);
 
+                    Glide.with(FindThridActivity2.this).load(img_src).placeholder(R.mipmap.loading).into(imageView1);
+                    Glide.with(FindThridActivity2.this).load(head_img).placeholder(R.mipmap.loading).transform(new GlideCirclerTransform(FindThridActivity2.this)).into(imageView2);
 
-                    String content = object1.getString("content");
-
+                    String content=object1.getString("content");
                     content2=content.replaceAll("data-src","src");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                Spanned spanned=  Html.fromHtml(content2, new Html.ImageGetter() {
+                Spanned spanned= Html.fromHtml(content2, new Html.ImageGetter() {
                     @Override
                     public Drawable getDrawable(String source) {
 
                         new MyTask().execute(source);
+
                         return null;
                     }
                 },null);
@@ -137,19 +125,17 @@ public class Find_Second_Activity2 extends Activity {
 
             }
         });
-
-        stringRequest.setTag("Find2ji2");
-        Volley.newRequestQueue(this).add(stringRequest);
-
+        request.setTag("find_3ji1");
+        MyApp.getApp().getRequestQueue().add(request);
 
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        Volley.newRequestQueue(this).cancelAll("Find2ji2");
-
+        MyApp.getApp().getRequestQueue().cancelAll("Find_3ji1");
     }
 
 
@@ -167,7 +153,6 @@ public class Find_Second_Activity2 extends Activity {
                 {
                     InputStream inputStream = httpURLConnection.getInputStream();
                     Drawable drawable = Drawable.createFromStream(inputStream,null);
-
                     //用不了
 //                    int intrinsicWidth = drawable.getIntrinsicWidth();
 //                    int intrinsicHeight = drawable.getIntrinsicHeight();
@@ -193,6 +178,8 @@ public class Find_Second_Activity2 extends Activity {
 //                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
 //                    drawable=new BitmapDrawable(bitmap);
 
+
+
 //                    int widthPixels = getResources().getDisplayMetrics().widthPixels;
 //                    int width=drawable.getIntrinsicWidth();
 //                    int height=drawable.getIntrinsicHeight();
@@ -201,7 +188,7 @@ public class Find_Second_Activity2 extends Activity {
 //                    int newHeight= (int) (widthPixels/scale);
 //
 //                    drawable.setBounds(0,0,widthPixels,newHeight);
-                    drawable.setBounds(5,5,690,600);
+                    drawable.setBounds(5,5,690,500);
 
 
                     return  drawable;

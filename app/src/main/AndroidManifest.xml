@@ -32,7 +32,9 @@
         <activity android:name=".find.Find_Second_Activity2" />
         <activity android:name=".find.FindHeadViewActivity1" />
         <activity android:name=".find.FindHeadViewActivity2" />
-        <activity android:name=".find.FindHeadViewActivity3"></activity>
+        <activity android:name=".find.FindHeadViewActivity3" />
+        <activity android:name=".find.FindThridActivity1" />
+        <activity android:name=".find.FindThridActivity2"></activity>
     </application>
 
 </manifest>

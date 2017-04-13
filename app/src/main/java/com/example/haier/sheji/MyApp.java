@@ -13,32 +13,38 @@ import com.zhy.autolayout.config.AutoLayoutConifg;
 
 public class MyApp extends Application {
 
-    private static MyApp app;
+    public static MyApp instance;
     private RequestQueue requestQueue;
     private Context context;
     
     @Override
     public void onCreate() {
         super.onCreate();
-        app = this;
-        context = this;
-        initVolley();
+
+        instance = this;
+
         AutoLayoutConifg.getInstance().useDeviceSize();
     }
 
-    private void initVolley() {
-
-        requestQueue = Volley.newRequestQueue(this);
-
+    /**
+     * 获取请求堆栈
+     *
+     * @return
+     */
+    public RequestQueue getRequestQueue()
+    {
+        if (requestQueue == null)
+        {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+        return requestQueue;
     }
 
     public static MyApp getApp() {
-        return app;
+        return instance;
     }
 
-    public RequestQueue getRequestQueue() {
-        return requestQueue;
-    }
+
 
     public Context getContext() {
         return context;
