@@ -5,10 +5,12 @@
     android:padding="2dp">
     <ImageView
         android:id="@+id/find_headView_2ji1_imageview1"
-        android:layout_width="155dp"
-        android:layout_height="110dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="160dp"
+        android:layout_height="105dp"
+        android:src="@mipmap/default_img"
         android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
         />
     <TextView
         android:id="@+id/find_headView_2ji1_text2"
@@ -22,7 +24,7 @@
         />
     <TextView
         android:id="@+id/find_headView_2ji1_text3"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:textColor="#333"
@@ -30,19 +32,21 @@
         android:textStyle="bold"
         android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
     <TextView
+        android:layout_marginBottom="15px"
         android:id="@+id/find_headView_2ji1_text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:textSize="12dp"
+        android:textSize="13dp"
         android:text="aaaaaaaaaaa"/>
     <TextView
+        android:layout_marginBottom="12px"
         android:id="@+id/find_headView_2ji1_text5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_alignBottom="@id/find_headView_2ji1_text4"
-        android:layout_toRightOf="@id/find_headView_2ji1_text4"
+        android:layout_marginRight="60px"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/find_headView_2ji1_imageview1"
         android:drawableLeft="@drawable/icon_read_num"
         android:textSize="11dp"
         android:text="1111"/>
