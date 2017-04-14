@@ -23,7 +23,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.haier.sheji.R;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,14 +48,14 @@ public class ZhuBaoFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     RequestQueue requestQueue;
-    private List<ShiTiLei.ContextBean> data;
+    private List<ShiTiLei.ListBeanX> data;
     private RecyclerViewAdaptr recyclerViewAdaptr;
     private RecyclerViewGridViewAdapter recyclerViewGridViewAdapter;
     //加载的页数
-    private int page = 0;
+    private int page = 1;
 
     //加载每页的条目数
-    private int itemPage=10;
+    private int itemPage=9;
 
     //判断要加载哪套布局  默认记载列表样式
     private boolean flag=true;
@@ -86,7 +85,7 @@ public class ZhuBaoFragment extends Fragment {
             @Override
             public void onRefresh() {
                 data.clear();
-                page = 0;
+                page = 1;
                 httpUrl();
                 shouQuan();
             }
@@ -135,7 +134,7 @@ public class ZhuBaoFragment extends Fragment {
             linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(linearLayoutManager);
             data.clear();
-            page=0;
+            page=1;
             httpUrl();
             recyclerViewAdaptr = new RecyclerViewAdaptr(getContext(), data);
             recyclerView.setAdapter(recyclerViewAdaptr);
@@ -145,7 +144,7 @@ public class ZhuBaoFragment extends Fragment {
             gridLayoutManager = new GridLayoutManager(getContext(),2);
             recyclerView.setLayoutManager(gridLayoutManager);
             data.clear();
-            page=0;
+            page=1;
             httpUrl();
             recyclerViewGridViewAdapter=new RecyclerViewGridViewAdapter(getContext(),data);
             recyclerView.setAdapter(recyclerViewGridViewAdapter);
@@ -154,14 +153,18 @@ public class ZhuBaoFragment extends Fragment {
 
     private void httpUrl() {
 
-        StringRequest request = new StringRequest("http://zbtj.batar.cn:9999/photo-album/search/recommend/?page="+page+"&itemperpage=" +itemPage, new Response.Listener<String>() {
+        StringRequest request = new StringRequest("http://mobile.ximalaya.com/m/explore_user_index?device=android&page="+page, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 Gson gson = new Gson();
-                List<ShiTiLei> list = gson.fromJson(response, new TypeToken<List<ShiTiLei>>() {
-                }.getType());
-                List<ShiTiLei.ContextBean> context = list.get(0).getContext();
+//                List<ShiTiLei> list = gson.fromJson(response, new TypeToken<List<ShiTiLei>>() {
+//                }.getType());
+//                List<ShiTiLei.ListBeanX> context = list.get(0).getContext();
+
+                ShiTiLei shiTiLei = gson.fromJson(response, ShiTiLei.class);
+                List<ShiTiLei.ListBeanX> context = shiTiLei.getList();
+
                 Log.d("TTT", "response:\n" + response.toString() + "\nsize:" + String.valueOf(context.size()));
 
                 if (context.size() < itemPage) {
@@ -179,7 +182,7 @@ public class ZhuBaoFragment extends Fragment {
                     Toast.makeText(getContext(), "没有更多数据", Toast.LENGTH_SHORT).show();
                 }
 
-                for (ShiTiLei.ContextBean contextBean : context) {
+                for (ShiTiLei.ListBeanX contextBean : context) {
                     data.add(contextBean);
                 }
                 Log.e("TAG", data.toString());

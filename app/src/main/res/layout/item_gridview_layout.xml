@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="30px"
         android:textColor="#333333"
-        android:gravity="center_horizontal"/>
+        android:layout_marginLeft="10px"/>
     <TextView
         android:layout_below="@+id/text1"
         android:layout_marginTop="20px"
@@ -24,5 +24,5 @@
         android:layout_height="wrap_content"
         android:textSize="30px"
         android:textColor="#333333"
-        android:gravity="center_horizontal"/>
+        android:layout_marginLeft="10px"/>
 </LinearLayout>

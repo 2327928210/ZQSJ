@@ -25,7 +25,7 @@ import butterknife.InjectView;
 
 public class RecyclerViewGridViewAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<ShiTiLei.ContextBean> data;
+    private List<ShiTiLei.ListBeanX> data;
 
     //设置底部布局
     private static final int TYPE_FOOTER = 0;
@@ -35,7 +35,7 @@ public class RecyclerViewGridViewAdapter extends RecyclerView.Adapter {
     //判断是不是最后一个item，默认是true
     private boolean mShowFooter = true;
 
-    public RecyclerViewGridViewAdapter(Context context, List<ShiTiLei.ContextBean> data) {
+    public RecyclerViewGridViewAdapter(Context context, List<ShiTiLei.ListBeanX> data) {
         this.context = context;
         this.data = data;
     }
@@ -82,14 +82,14 @@ public class RecyclerViewGridViewAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if (holder instanceof ViewHolder) {
-            ShiTiLei.ContextBean bean = data.get(position);
+            ShiTiLei.ListBeanX bean = data.get(position);
             if (data == null) {
                 return;
             }
             ViewHolder viewHolder = (ViewHolder) holder;
-            Glide.with(context).load("http://zbtj.batar.cn:9999/photo-album/image/" + bean.getImg()).placeholder(R.mipmap.default_img).into(viewHolder.itemImage);
-            viewHolder.text1.setText(bean.getNumber());
-            viewHolder.text2.setText(bean.getName());
+            Glide.with(context).load(bean.getList().get(0).getSmallLogo()).placeholder(R.mipmap.default_img).into(viewHolder.itemImage);
+            viewHolder.text1.setText(bean.getList().get(0).getNickname());
+            viewHolder.text2.setText(bean.getList().get(0).getVerifyTitle());
 
         }
 

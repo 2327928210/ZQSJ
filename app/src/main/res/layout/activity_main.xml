@@ -54,7 +54,7 @@
         <!--珠宝-->
         <RadioButton
             android:id="@+id/activity_home_rb_zhubao"
-            android:text="珠宝"
+            android:text="搞笑"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
