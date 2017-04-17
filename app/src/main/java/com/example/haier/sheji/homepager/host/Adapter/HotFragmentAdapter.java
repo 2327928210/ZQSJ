@@ -28,11 +28,19 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private Context context;
     private List<HotFragmentBean> data;
     private ImageLoader imageLoader;
+    private View.OnClickListener mClickListener;
+ //   private View.OnLongClickListener mLongClickListener;//长点击监听
+    private OneViewHolder holder1;
+    private TwoViewHolder holder2;
+    private TwoViewHolder holder3;
+    private TwoViewHolder holder4;
+    private TwoViewHolder holder5;
 
 
-    public HotFragmentAdapter(Context context, List<HotFragmentBean> data) {
+    public HotFragmentAdapter(Context context, List<HotFragmentBean> data/*View.OnClickListener listener*/) {
         this.context = context;
         this.data = data;
+        //mClickListener = listener;
     }
 
     @Override
@@ -64,25 +72,50 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return holder;
     }
 
+    public  void  setClickListener(View.OnClickListener listener)
+    {
+
+        mClickListener = listener;
+}
+   /* //设置长按点击事件监听
+    public  void setLongClickLinstener(View.OnLongClickListener listener ){
+        mLongClickListener = listener;
+    }*/
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
        int type = getItemViewType(position);
         HotFragmentBean hotFragmentBean = data.get(position);
-      //item点击事件----------------------
-
-
-      //item点击事件----------------------
         switch (type){
-
             case ONE_ITEM:
-                OneViewHolder holder1 = (OneViewHolder) holder;
-
+                holder1 = (OneViewHolder) holder;
                    holder1.Title.setText(hotFragmentBean.getTitle());
                    holder1.Cate_Title.setText(hotFragmentBean.getCate_title());
-                  holder1.Visit_Num.setText(hotFragmentBean.getValue());
+                   holder1.Visit_Num.setText(hotFragmentBean.getValue());
 
                 Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder1.Image_Src);
                 //填数据
+                //item点击事件----------------------
+               // holder1.Image_Src.setTag("holder1");
+//                holder1.Image_Src.setTag(position);
+//                holder1.Title.setTag(position);
+                if (mClickListener!=null) {
+                    holder1.Image_Src.setOnClickListener(mClickListener);
+                    holder1.Title.setOnClickListener(mClickListener);
+                }
+                //长点击监听
+                /*
+                if (mLongClickListener!=null){
+                    holder1.Image_Src.setOnLongClickListener(mLongClickListener);
+                }*/
+                /*//第一种通过匿名内部类，成功了
+                holder1.Image_Src.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("TAG", "onClick: 点击了"+position);
+                    }
+                });
+                */
+                //item点击事件----------------------
                 break;
             case TWO_ITEM:
                 TwoViewHolder holder2 = (TwoViewHolder) holder;
@@ -135,10 +168,8 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                 Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder5.Image_Src2);
                 break;
-
             //^^^^^^^^^^^^^^^^^^^^^^^^^^^第五个item复用第二个………………………………………………………………………………
         }
-
     }
 
     @Override
@@ -150,8 +181,20 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public int getItemViewType(int position) {
         int type = position%5+1;
         return  type;
-
     }
+//    @Override
+//    public void onClick(View v) {
+//        if (v != null) {
+//            String tag = (String) v.getTag();
+//            switch (tag) {
+//                case "holder1":
+//                    Toast.makeText(context, "LALALAL", Toast.LENGTH_SHORT).show();
+//                    Log.e("TAG", "onClick:点击了 " );
+//                    break;
+//            }
+//        }
+//    }
+
 
 
     //------------------多布局之第一个布局——————————————————————
@@ -186,7 +229,6 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             Image_Src2 = (ImageView) itemView.findViewById(R.id.Image_Src2_Home_Fragment_Recyclerview_one_item);
         }
         //========================多布局之地二个布局 ===========================================
-
     }
 }
 

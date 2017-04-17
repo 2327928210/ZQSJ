@@ -15,6 +15,11 @@
             <enum name="outside" value="1"/>
             <enum name="solo" value="2"/>
         </attr>
+        
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgress">
+        <attr name="borderWidth" format="dimension" />
     </declare-styleable>
 
 </resources>

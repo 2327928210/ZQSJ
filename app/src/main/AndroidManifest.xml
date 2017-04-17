@@ -34,7 +34,9 @@
         <activity android:name=".find.FindHeadViewActivity2" />
         <activity android:name=".find.FindHeadViewActivity3" />
         <activity android:name=".find.FindThridActivity1" />
-        <activity android:name=".find.FindThridActivity2"></activity>
+        <activity android:name=".find.FindThridActivity2" />
+        <activity android:name=".homepager.host.Hot_Fragment_Second.SecondWebViewActivity" />
+        <activity android:name=".homepager.host.Hot_Fragment_Second.Second_WebActivity"></activity>
     </application>
 
 </manifest>

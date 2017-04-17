@@ -17,4 +17,7 @@
     <!--button对应的背景颜色-->
     <color name="button_checked">#ee7600</color>
     <color name="button_noChecked">#fff</color>
+
+    <!--下面这四个我用作progressbar-->
+    <color name="red">#FFC93437</color> <color name="blue">#FF375BF1</color> <color name="yellow">#FFF7D23E</color> <color name="green">#FF34A350</color>
 </resources>

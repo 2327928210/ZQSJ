@@ -1,0 +1,44 @@
+
+<ScrollView
+    android:id="@+id/scoll_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_second__web"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.app.zhangzhaoqiang.theheadlines.Home_Fragment_First.HotFragment.Hot_Fragment_Second.Second_WebActivity">
+
+   <ImageView
+       android:id="@+id/Html_Hot_img_src"
+       android:scaleType="centerCrop"
+       android:layout_width="match_parent"
+       android:layout_height="180dp"
+       android:src="@drawable/ceshi"/>
+   <WebView
+
+       android:layout_below="@id/Html_Hot_img_src"
+       android:id="@+id/webView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+   <com.example.haier.sheji.homepager.host.ProgressBar.CircularProgress
+       android:id="@+id/progressbar"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       app:borderWidth="6dp"
+       android:layout_gravity="center"
+       android:layout_centerInParent="true" />
+</LinearLayout>
+
+   </ScrollView>
+
+
+
+
+
+

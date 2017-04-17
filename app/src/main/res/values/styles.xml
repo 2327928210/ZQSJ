@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--以下是progressDialog的属性，要是progressBra能用就可以删啦-->
+    <style name="draw_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimEnabled">false</item> <!-- activity 不变暗 -->  <!--是否模糊-->
+        <item name="android:windowIsFloating">false</item> <!-- 是否浮现在activity之上 -->
+        <item name="android:windowNoTitle">true</item> <!-- 无标题 -->
+        <item name="android:windowIsTranslucent">true</item> <!-- 半透明 -->
+        <item name="android:windowFrame">@null</item> <!--是否去除边框-->
+        <item name="android:windowBackground">@android:color/transparent</item>  <!--背景颜色及和透明程度-->
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>
