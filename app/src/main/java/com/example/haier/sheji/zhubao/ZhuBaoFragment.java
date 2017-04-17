@@ -39,7 +39,6 @@ import butterknife.OnClick;
  */
 public class ZhuBaoFragment extends Fragment {
 
-
     @InjectView(R.id.button)
     Button button;
     @InjectView(R.id.recyclerView)
@@ -55,7 +54,7 @@ public class ZhuBaoFragment extends Fragment {
     private int page = 1;
 
     //加载每页的条目数
-    private int itemPage=9;
+    private int itemPage=10;
 
     //判断要加载哪套布局  默认记载列表样式
     private boolean flag=true;
@@ -170,8 +169,8 @@ public class ZhuBaoFragment extends Fragment {
                 if (context.size() < itemPage) {
 
                     if (flag) {
-                        recyclerViewAdaptr.isShowFooter(false);
                     } else {
+                        recyclerViewAdaptr.isShowFooter(false);
                         recyclerViewGridViewAdapter.isShowFooter(false);
                     }
 
@@ -216,6 +215,8 @@ public class ZhuBaoFragment extends Fragment {
         //将请求添加到请求队列
         requestQueue.add(request);
 
+
+
     }
 
 
@@ -256,5 +257,7 @@ public class ZhuBaoFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+
+        requestQueue.cancelAll("request");
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<ImageView
+    android:scaleType="centerCrop"
+    android:id="@+id/Image_Src_Home_Fragment_Recyclerview_one_item"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/Title_Home_Fragment_Recyclerview_one_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="头条电影院"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:padding="10dp"/>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <TextView
+        android:id="@+id/Cate_Title_Home_Fragment_Recyclerview_one_item"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="独立鱼电影"
+        android:textColor="#808A88"
+        android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+           android:src="@drawable/eye"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/Cate_Title_Home_Fragment_Recyclerview_one_item"
+            android:layout_toEndOf="@+id/Cate_Title_Home_Fragment_Recyclerview_one_item"
+            android:layout_marginTop="5dp" />
+        <TextView
+            android:id="@+id/Visit_Num_Home_Fragment_Recyclerview_one_item"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4067"
+            android:textColor="#808A88"
+            android:layout_toRightOf="@id/iv"
+
+           android:padding="10dp"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

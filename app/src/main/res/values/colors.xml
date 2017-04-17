@@ -2,13 +2,13 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#e78c3b</color>
 
     <color name="textcolor">#999</color>
     <color name="notextcolor">#333</color>
     <!-- raiobutton对应的文本颜色-->
-    <color name="radiobutton_checked">#FC5832</color>
-    <color name="radiobutton_noChecked">#BFB9B9</color>
+    <color name="radiobutton_checked">#e78c3b</color>
+    <color name="radiobutton_noChecked">#666</color>
 
     <!--relative对应的背景颜色-->
     <color name="relativelayout_checked">#ccc</color>
