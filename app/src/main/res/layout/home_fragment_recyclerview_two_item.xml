@@ -15,9 +15,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:maxLines="3"
-    android:textSize="15sp"
+    android:textSize="16sp"
+    android:textColor="#333"
     android:ellipsize="end"
-    android:textStyle="bold"
     android:text="很多人以为剩菜一定要放凉才能放入冰箱。没想到这个错误的举动已经残害了我们健康20年"/>
       <RelativeLayout
           android:layout_width="match_parent"
@@ -28,16 +28,17 @@
             android:layout_height="wrap_content"
             android:text="独立鱼电影"
             android:textColor="#808A88"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="17dp"
             android:textSize="13sp"/>
 
         <ImageView
             android:id="@+id/iv2"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/eye"
+            android:scaleType="fitXY"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
            android:layout_toRightOf="@id/Cate_Title2_Home_Fragment_Recyclerview_one_item"
            />
           <TextView
@@ -46,7 +47,7 @@
               android:layout_height="wrap_content"
               android:text="4067"
               android:textColor="#808A88"
-              android:layout_marginTop="27dp"
+              android:layout_marginTop="17dp"
               android:layout_toRightOf="@id/iv2"
               android:layout_marginLeft="10dp"
               android:textSize="13sp"/>

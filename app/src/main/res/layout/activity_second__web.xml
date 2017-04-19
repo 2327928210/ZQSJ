@@ -21,7 +21,6 @@
        android:layout_height="180dp"
        android:src="@drawable/ceshi"/>
    <WebView
-
        android:layout_below="@id/Html_Hot_img_src"
        android:id="@+id/webView"
        android:layout_width="match_parent"

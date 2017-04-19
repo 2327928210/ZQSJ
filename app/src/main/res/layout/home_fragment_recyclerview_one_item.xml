@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <ImageView
-    android:scaleType="centerCrop"
+    android:scaleType="fitXY"
     android:id="@+id/Image_Src_Home_Fragment_Recyclerview_one_item"
     android:layout_width="match_parent"
     android:layout_height="180dp"
@@ -16,11 +16,12 @@
         android:layout_height="wrap_content"
         android:text="头条电影院"
         android:textStyle="bold"
+        android:textColor="#333"
         android:textSize="22sp"
         android:padding="10dp"/>
 
     <RelativeLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -35,13 +36,13 @@
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
            android:src="@drawable/eye"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/Cate_Title_Home_Fragment_Recyclerview_one_item"
             android:layout_toEndOf="@+id/Cate_Title_Home_Fragment_Recyclerview_one_item"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="10dp" />
         <TextView
             android:id="@+id/Visit_Num_Home_Fragment_Recyclerview_one_item"
 

@@ -131,7 +131,9 @@ public class HostFragment extends Fragment implements View.OnClickListener{
         }
 
         if (data.size()!=0){
-            circularProgressBar.setVisibility(View.GONE);
+            if (circularProgressBar != null) {
+                circularProgressBar.setVisibility(View.GONE);
+            }
         }
         //******************************progressbar****************
         setListener();//下拉刷新监听

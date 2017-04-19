@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/interaction_img_src2"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ceshi"/>
+    <com.example.haier.sheji.homepager.hudong.CustomTextView
+        android:id="@+id/interaction_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="这是在图片上放文字呀.在主界面位于互动的位置呀呀呀"
+        android:textSize="16sp"
+       android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFF5F7F7"/>
+
+   <ImageView
+       android:id="@+id/interaction_iv1"
+       android:layout_gravity="center_horizontal"
+       android:layout_marginTop="100dp"
+       android:scaleType="fitXY"
+       android:layout_width="80dp"
+       android:layout_height="4dp"
+       android:src="@drawable/biankaung"
+       />
+    <ImageView
+        android:id="@+id/interaction_iv2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
+        android:scaleType="fitXY"
+        android:layout_width="80dp"
+        android:layout_height="4dp"
+        android:src="@drawable/biankaung"
+        />
+    <ImageView
+        android:id="@+id/interaction_iv3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginLeft="118dp"
+        android:src="@drawable/head_icon"/>
+
+    <TextView
+        android:id="@+id/interaction_value2"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="145dp"
+        android:text="4659"/>
+    <TextView
+        android:id="@+id/interaction_tv1"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+          android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginLeft="176dp"
+        android:text="人已参与" />
+    <View
+        android:layout_marginTop="150dp"
+        android:background="@drawable/biankaung"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+
+
+</FrameLayout >
