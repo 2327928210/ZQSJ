@@ -36,7 +36,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/eye"
-            android:scaleType="fitXY"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="16dp"
            android:layout_toRightOf="@id/Cate_Title2_Home_Fragment_Recyclerview_one_item"
@@ -61,7 +60,7 @@
 
         <ImageView
             android:id="@+id/Image_Src2_Home_Fragment_Recyclerview_one_item"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
