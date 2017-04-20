@@ -1,6 +1,7 @@
 package com.example.haier.sheji.homepager.host.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.bumptech.glide.Glide;
 import com.example.haier.sheji.R;
 import com.example.haier.sheji.homepager.host.bean.HotFragmentBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private List<HotFragmentBean> data;
     private ImageLoader imageLoader;
     private View.OnClickListener mClickListener;
- //   private View.OnLongClickListener mLongClickListener;//长点击监听
+    //   private View.OnLongClickListener mLongClickListener;//长点击监听
     private OneViewHolder holder1;
     private TwoViewHolder holder2;
     private TwoViewHolder holder3;
@@ -41,6 +43,7 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.context = context;
         this.data = data;
         //mClickListener = listener;
+
     }
 
     @Override
@@ -51,7 +54,7 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case ONE_ITEM:
                 View view = LayoutInflater.from(context).inflate(R.layout.home_fragment_recyclerview_one_item,parent,false);
                 holder = new OneViewHolder(view);
-            break;
+                break;
             case  TWO_ITEM:
                 View view1 = LayoutInflater.from(context).inflate(R.layout.home_fragment_recyclerview_two_item,parent,false);
                 holder = new TwoViewHolder(view1);
@@ -76,28 +79,43 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     {
 
         mClickListener = listener;
-}
-   /* //设置长按点击事件监听
-    public  void setLongClickLinstener(View.OnLongClickListener listener ){
-        mLongClickListener = listener;
-    }*/
+    }
+    /* //设置长按点击事件监听
+     public  void setLongClickLinstener(View.OnLongClickListener listener ){
+         mLongClickListener = listener;
+     }*/
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-       int type = getItemViewType(position);
+        int type = getItemViewType(position);
         HotFragmentBean hotFragmentBean = data.get(position);
         switch (type){
             case ONE_ITEM:
                 holder1 = (OneViewHolder) holder;
-                   holder1.Title.setText(hotFragmentBean.getTitle());
-                   holder1.Cate_Title.setText(hotFragmentBean.getCate_title());
-                   holder1.Visit_Num.setText(hotFragmentBean.getValue());
+                holder1.Title.setText(hotFragmentBean.getTitle());
+                holder1.Cate_Title.setText(hotFragmentBean.getCate_title());
+                holder1.Visit_Num.setText(hotFragmentBean.getValue());
 
-                Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder1.Image_Src);
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.RGB_565)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        //.displayer(new FadeInBitmapDisplayer(3*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+
+                holder1.Image_Src.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            ;
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder1.Image_Src,displayImageOptions);
                 //填数据
                 //item点击事件----------------------
-               // holder1.Image_Src.setTag("holder1");
-//                holder1.Image_Src.setTag(position);
-//                holder1.Title.setTag(position);
+                // holder1.Image_Src.setTag("holder1");
+                holder1.Image_Src.setTag(position);
+                holder1.Title.setTag(position);
                 if (mClickListener!=null) {
                     holder1.Image_Src.setOnClickListener(mClickListener);
                     holder1.Title.setOnClickListener(mClickListener);
@@ -118,40 +136,106 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 //item点击事件----------------------
                 break;
             case TWO_ITEM:
-                TwoViewHolder holder2 = (TwoViewHolder) holder;
+                holder2 = (TwoViewHolder) holder;
                 //填第二个的数据
 
                 holder2.Title2.setText(hotFragmentBean.getTitle());
                 holder2.Cate_Title2.setText(hotFragmentBean.getCate_title());
                 holder2.Visit_Num2.setText(hotFragmentBean.getValue());
 
-                Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder2.Image_Src2);
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions2 = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.RGB_565)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        // .displayer(new FadeInBitmapDisplayer(1*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                holder2.Image_Src2.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder2.Image_Src2,displayImageOptions2);
+                //item点击事件----------------------
+                //holder2.Image_Src2.setTag("holder2");
+                holder2.Image_Src2.setTag(position);
+                holder2.Title2.setTag(position);
+                if (mClickListener!=null) {
+                    holder2.Image_Src2.setOnClickListener(mClickListener);
+                    holder2.Title2.setOnClickListener(mClickListener);
+                }
+                //item点击事件----------------------
                 break;
             //++++++++++++++++++=+++++++第三item复用第二个++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
 
             case THREE_ITEM:
-                TwoViewHolder holder3 = (TwoViewHolder) holder;
+                holder3 = (TwoViewHolder) holder;
                 //填第二个的数据
 
                 holder3.Title2.setText(hotFragmentBean.getTitle());
                 holder3.Cate_Title2.setText(hotFragmentBean.getCate_title());
                 holder3.Visit_Num2.setText(hotFragmentBean.getValue());
 
-                Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder3.Image_Src2);
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions3 = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.RGB_565)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        // .displayer(new FadeInBitmapDisplayer(1*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                holder3.Image_Src2.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder3.Image_Src2,displayImageOptions3);
+                //item点击事件----------------------
+                // holder3.Image_Src2.setTag("holder3");
+                holder3.Image_Src2.setTag(position);
+                holder3.Title2.setTag(position);
+                if (mClickListener!=null) {
+                    holder3.Image_Src2.setOnClickListener(mClickListener);
+                    holder3.Title2.setOnClickListener(mClickListener);
+                }
+                //item点击事件----------------------
                 break;
             //++++++++++++++++++=+++++++第三item复用第二个++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
 
             //%%%%%%%%%%%%%%%%%%%%%%%%%%第四个item复用第二个%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             case FOYR_ITEM:
-                TwoViewHolder holder4 = (TwoViewHolder) holder;
+                holder4 = (TwoViewHolder) holder;
                 //填第二个的数据
 
                 holder4.Title2.setText(hotFragmentBean.getTitle());
                 holder4.Cate_Title2.setText(hotFragmentBean.getCate_title());
                 holder4.Visit_Num2.setText(hotFragmentBean.getValue());
 
-                Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder4.Image_Src2);
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions4 = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.RGB_565)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        // .displayer(new FadeInBitmapDisplayer(1*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                holder4.Image_Src2.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder4.Image_Src2,displayImageOptions4);
+                //item点击事件----------------------
+                //holder4.Image_Src2.setTag("holder4");
+                holder4.Image_Src2.setTag(position);
+                holder4.Title2.setTag(position);
+                if (mClickListener!=null) {
+                    holder4.Image_Src2.setOnClickListener(mClickListener);
+                    holder4.Title2.setOnClickListener(mClickListener);
+                }
+                //item点击事件----------------------
                 break;
 
             //%%%%%%%%%%%%%%%%%%%%%%%%%%第四个item复用第二个%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,15 +243,38 @@ public class HotFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             //^^^^^^^^^^^^^^^^^^^^^^^^^^^第五个item复用第二个………………………………………………………………………………
 
             case FIVE_ITEM:
-                TwoViewHolder holder5 = (TwoViewHolder) holder;
+                holder5 = (TwoViewHolder) holder;
                 //填第二个的数据
 
                 holder5.Title2.setText(hotFragmentBean.getTitle());
                 holder5.Cate_Title2.setText(hotFragmentBean.getCate_title());
                 holder5.Visit_Num2.setText(hotFragmentBean.getValue());
 
-                Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder5.Image_Src2);
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions5 = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.RGB_565)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        // .displayer(new FadeInBitmapDisplayer(1*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                holder5.Image_Src2.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder5.Image_Src2,displayImageOptions5);
+                //item点击事件----------------------
+                //holder5.Image_Src2.setTag("holder5");
+                holder5.Image_Src2.setTag(position);
+                holder5.Title2.setTag(position);
+                if (mClickListener!=null) {
+                    holder5.Image_Src2.setOnClickListener(mClickListener);
+                    holder5.Title2.setOnClickListener(mClickListener);
+                }
+                //item点击事件----------------------
                 break;
+
             //^^^^^^^^^^^^^^^^^^^^^^^^^^^第五个item复用第二个………………………………………………………………………………
         }
     }

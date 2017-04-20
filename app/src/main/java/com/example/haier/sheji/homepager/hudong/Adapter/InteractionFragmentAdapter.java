@@ -1,6 +1,7 @@
 package com.example.haier.sheji.homepager.hudong.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.bumptech.glide.Glide;
 import com.example.haier.sheji.R;
 import com.example.haier.sheji.homepager.host.bean.HotFragmentBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import java.util.List;
 
@@ -74,8 +76,8 @@ public class InteractionFragmentAdapter extends RecyclerView.Adapter<RecyclerVie
         RecyclerView.ViewHolder  holder = null;
         switch (viewType) {
             case IS_NORMAL:
-            View view = LayoutInflater.from(context).inflate(R.layout.interaction_fragment_recyclerview_item, parent, false);
-             holder = new MyViewHolder(view);
+                View view = LayoutInflater.from(context).inflate(R.layout.interaction_fragment_recyclerview_item, parent, false);
+                holder = new MyViewHolder(view);
                 break;
             case IS_HEADER:  //载入头部视图标签
                 //View view2 = View.inflate(context,R.layout.interaction_fragment_recyclerview_head_item,null);
@@ -85,11 +87,11 @@ public class InteractionFragmentAdapter extends RecyclerView.Adapter<RecyclerVie
         }
         return holder;
     }
-//设置点击事件
-public  void  setClickListener(View.OnClickListener listener) {
+    //设置点击事件
+    public  void  setClickListener(View.OnClickListener listener) {
 
-    mClickListener = listener;
-}
+        mClickListener = listener;
+    }
 
 
 
@@ -100,31 +102,53 @@ public  void  setClickListener(View.OnClickListener listener) {
         // HotFragmentBean hotFragmentBean = data.get(position);
         int type = getItemViewType(position);
         HotFragmentBean hotFragmentBean = data.get(position);
-         switch (type){
-             case IS_NORMAL://普通视图
-                 MyViewHolder holder1 = (MyViewHolder) holder;
-                 holder1.title.setText(hotFragmentBean.getTitle());
-                 holder1.value.setText(hotFragmentBean.getValue());
-
-                 Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder1.img_src);
+        switch (type){
+            case IS_NORMAL://普通视图
+                MyViewHolder holder1 = (MyViewHolder) holder;
+                holder1.title.setText(hotFragmentBean.getTitle());
+                holder1.value.setText(hotFragmentBean.getValue());
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.ARGB_4444)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        //.displayer(new FadeInBitmapDisplayer(3*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder1.img_src, displayImageOptions);
                 //———————————————————item点击事件
-                 //holder1.img_src.setTag(position);
-                 if (mClickListener != null){
-                     holder1.img_src.setOnClickListener(mClickListener);
-                 }
-                 break;
-             case  IS_HEADER:
-                 MyViewHolder2 holder2 = (MyViewHolder2) holder;
-                 holder2.title2.setText(hotFragmentBean.getTitle());
-                 holder2.value2.setText(hotFragmentBean.getValue());
-
-                 Glide.with(context).load(hotFragmentBean.getImg_src()).placeholder(R.mipmap.loading).into(holder2.img_src2);
-              // holder2.img_src2.setTag(position);
+                holder1.img_src.setTag(position);
+                if (mClickListener != null){
+                    holder1.img_src.setOnClickListener(mClickListener);
+                }
+                break;
+            case  IS_HEADER:
+                MyViewHolder2 holder2 = (MyViewHolder2) holder;
+                holder2.title2.setText(hotFragmentBean.getTitle());
+                holder2.value2.setText(hotFragmentBean.getValue());
+                imageLoader = ImageLoader.getInstance();
+                DisplayImageOptions displayImageOptions2 = new DisplayImageOptions.Builder()
+                        .cacheInMemory(true)                //内存缓存
+                        .cacheOnDisk(true)                  //磁盘缓存
+                        .bitmapConfig(Bitmap.Config.ARGB_4444)//解码方式
+                        .resetViewBeforeLoading(true)       //加载前是否重置,为了放置图片错位
+                        //.showImageOnLoading(R.mipmap.ic_launcher) //默认图片
+                        // .showImageOnFail(R.mipmap.ic_launcher)    //失败图片
+                        .showImageForEmptyUri(R.mipmap.ic_launcher)  //url地址为空的时候显示的图片
+                        .imageScaleType(ImageScaleType.NONE) //缩放类型
+                        //.displayer(new FadeInBitmapDisplayer(3*1000))//显示前的处理【CircleBitmapDisplayer,FadeInBitmapDisplayer,RoundedBitmapDisplayer】
+                        .build();
+                imageLoader.displayImage(hotFragmentBean.getImg_src(), holder2.img_src2, displayImageOptions2);
+                holder2.img_src2.setTag(position);
                 if (mClickListener != null ){
                     holder2.img_src2.setOnClickListener(mClickListener);
                 }
-                 break;
-         }
+                break;
+        }
 
     }
 

@@ -35,4 +35,5 @@ dependencies {
     compile 'com.android.support:design:24.0.0-beta1'
     compile 'com.jakewharton:butterknife:5.1.1'
     compile project(':pullToRefresh_Library')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
