@@ -6,7 +6,7 @@ package com.example.haier.sheji;
  * 接口类
  */
 
-public  class Constants {
+public  class Constants  {
 
 
     //首页-->热门
