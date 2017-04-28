@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.example.haier.sheji.find.FindFragment;
 import com.example.haier.sheji.homepager.HomePagerFragment;
+import com.example.haier.sheji.homepager.hudong.HuDongFragment;
 import com.example.haier.sheji.myself.MySelfFragment;
-import com.example.haier.sheji.zhubao.ZhuBaoFragment;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener{
 
@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         FindFragment find = new FindFragment();
         fragments[1] = find;
 
-        ZhuBaoFragment zhuBaoFragment = new ZhuBaoFragment();
+        HuDongFragment zhuBaoFragment = new HuDongFragment();
         fragments[2]=zhuBaoFragment;
 
         MySelfFragment mySelfFragment = new MySelfFragment();

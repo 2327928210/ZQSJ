@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:textSize="13dp"
+        android:textSize="15dp"
         android:text="aaaaaaaaaaa"/>
     <TextView
         android:layout_marginBottom="12px"
@@ -48,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/find_headView_2ji1_imageview1"
         android:drawableLeft="@drawable/icon_read_num"
-        android:textSize="11dp"
+        android:textSize="13dp"
         android:text="1111"/>
 
 
