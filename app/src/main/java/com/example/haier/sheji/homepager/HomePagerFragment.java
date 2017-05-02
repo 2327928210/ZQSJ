@@ -50,7 +50,7 @@ public class HomePagerFragment extends Fragment {
         titles.add("生活");
         titles.add("娱乐");
         titles.add("兴趣");
-        titles.add("爆笑");
+        titles.add("互动");
         titles.add("推荐");
         titles.add("宠物");
         HomeFragmentAdapter adapter = new HomeFragmentAdapter(getChildFragmentManager(),fragments,titles);
